@@ -9,7 +9,7 @@ const sequelize = require('./config/connection');   //imports a instance of sequ
 const SequelizeStore = require('connect-session-sequelize')(session.Store);     //imports 'connect-session-sequelize' module and calls it with 'session.Store'. It is used to store express session data to sql database, that can save sessions on server restart.
 
 const app = express();
-const port = process.env || 3001;
+const port = process.env.PORT|| 3001;
 
 const hbs = exphbs.create({helpers});   //uses .create to create a new instance of handlebars
 
@@ -23,6 +23,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-sequelize.sync({ force: false}).then(() => {    //syncs sequelize to the database
-    app.listen(port, () => console.log('Now listening'));
-});
+// sequelize.sync({ force: false}).then(() => {    //syncs sequelize to the database
+//     app.listen(port, () => console.log('Now listening'));
+// });
+
+app.listen(port, () => console.log(`Server running on port ${port}`));
