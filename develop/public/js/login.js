@@ -12,6 +12,13 @@ const loginForm = async (event) => {
             body: JSON.stringify({email, password}),
             headers: {'Content-Type': 'application/json'},
         });
+
+        if(response.ok) {
+            // if resonse was successful, page will redirect to the homepage
+            document.location.replace('/homepage');
+        } else {
+            alert(response.statusText);
+        }
     }
 
 
