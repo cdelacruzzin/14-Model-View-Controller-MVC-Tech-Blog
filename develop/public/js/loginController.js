@@ -1,6 +1,5 @@
 
-const  loginHandler = async (event) => {
-    event.prevendDefault();
+const  loginHandler = async () => {
 
     await fetch('/login', {
         method: 'GET',

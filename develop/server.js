@@ -20,6 +20,8 @@ app.set('view engine', 'handlebars');   // will automatically add '.handlebars' 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstrap/dist')));
+
 
 app.use(routes);
 
