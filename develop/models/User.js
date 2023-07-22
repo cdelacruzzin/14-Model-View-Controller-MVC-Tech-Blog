@@ -3,7 +3,11 @@ const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 
-class User extends Model {}
+class User extends Model {
+  validPassword(password) {
+    return bcrypt.compareSync(password, this.password);   // Check if the provided password matches the hashed password in the database
+  }
+}
 
 User.init({
     id: {
@@ -40,7 +44,11 @@ User.init({
       newUserData.password = await bcrypt.hash(newUserData.password, 10);
 
       return newUserData;   //returns the new hashed password, and will be used to creat the new User in the db
-    }
+    },
+    beforeUpdate: async (updatedUserData) => {
+      updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+      return updatedUserData;
+    },
   },
     sequelize,
     timestamps: false,
