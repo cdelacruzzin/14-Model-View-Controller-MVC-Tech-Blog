@@ -25,8 +25,7 @@ app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstr
 
 app.use(routes);
 
-// sequelize.sync({ force: false}).then(() => {    //syncs sequelize to the database
-//     app.listen(port, () => console.log('Now listening'));
-// });
-
-app.listen(port, () => console.log(`Server running on port ${port}`));
+sequelize.sync({ force: false}).then(() => {    //syncs sequelize to the database. {force: false} means that Sequelize won't make any changes to the tables if they already exist.
+    //if true, it will drop and recreate the tables.
+    app.listen(port, () => console.log(`Server running on port ${port}`));
+});
