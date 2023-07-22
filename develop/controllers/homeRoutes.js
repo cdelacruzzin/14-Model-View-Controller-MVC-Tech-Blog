@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const Blog = require('../models');
 
 
 
@@ -19,7 +20,13 @@ router.get('/signup', async (req, res) => {
 });
 
 router.get('/homepage', async (req, res) => {
-    res.render('./homepage');
+    try {
+        const allProjects = await Blog.findAll({
+            
+        })
+    } catch (error) {
+        res.status(500).json(error);
+    }
 })
 
 module.exports = router;
