@@ -17,15 +17,9 @@ router.post('/signup', async (req, res) => {
             name: req.body.name,
             email: req.body.email,
             password: req.body.password,
-        })
+        });
+
         res.status(200).json(newUser);
-
-        // req.session.save(() => {
-        //     req.session.user_id = User.id;
-        //     req.session.loggedIn = true;
-
-        //     
-        // });
 
     } catch (error) {
         res.status(400).json(error);
