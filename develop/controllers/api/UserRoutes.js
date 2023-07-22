@@ -12,15 +12,17 @@ router.post('/login', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
     try {
-        // const userData = await User.create(req.body);
         const newUser = await User.create({
             name: req.body.username,
             email: req.body.email,
             password: req.body.password,
         });
-
-        res.status(200).json(newUser);
-
+        req.session.save(() => {    //method to save the session
+            req.session.user_id = newUser.id;   //the user's id is stored in the session
+            req.session.logged_in = true;   //the 'logged_in property is set to true. a flag to check whether the user is logged in
+      
+            res.status(200).json(newUser);
+          });
     } catch (error) {
         res.status(400).json(error);
     }
