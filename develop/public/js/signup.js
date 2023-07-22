@@ -16,9 +16,12 @@ const signupForm = async (event) => {
             headers: {'Content-Type': 'application/json'},
         });
 
-        alert(response.statusText);
+        if(response.ok) {
+            window.location.replace('/homepage');
+        } else {
+            alert(response.statusText);
+        }
     }
-    
 }
 
 document.querySelector('.signup-form').addEventListener('submit', signupForm);
