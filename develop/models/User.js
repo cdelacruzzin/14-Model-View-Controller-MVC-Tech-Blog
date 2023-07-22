@@ -33,6 +33,15 @@ User.init({
       },
 },
 {
+  hooks: {
+    //hook will activate before a new instance is created and saved to the db
+    beforeCreate: async (newUserData) => {
+      //we take the password from userData and hashi it with bycrypt, then the 2nd argument is the number of rounds bycrypt will go through the salt
+      newUserData.password = await bcrypt.hash(newUserData.password, 10);
+
+      return newUserData;   //returns the new hashed password, and will be used to creat the new User in the db
+    }
+  },
     sequelize,
     timestamps: false,
     freezeTableName: true,
