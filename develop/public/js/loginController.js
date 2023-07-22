@@ -1,9 +1,12 @@
 
 const  loginHandler = async () => {
 
-    await fetch('/login', {
-        method: 'GET',
-    });
+    window.location.replace('/login');
+}
+
+const  signupHandler = async () => {
+
+    window.location.replace('/signup');
 }
 
 document.querySelector('#logninBtn').addEventListener('click', loginHandler);
