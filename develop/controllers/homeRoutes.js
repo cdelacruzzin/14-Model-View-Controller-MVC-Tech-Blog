@@ -36,9 +36,12 @@ router.get('/homepage', async (req, res) => {   //Query all blogs from the datab
         const blogs = allBlogs.map((blog) => blog.get({plain:true})); //maps over all elements of of allBlogs and serialeze them
         //serialize to make the data easier to handle/reaD
         
+        console.log(req.session);
+
+
         res.render('homepage', {
             blogs,
-            logged: req.session.logged_in
+            logged_in: true,
         });
     } catch (error) {
         res.status(500).json(error);

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 
 </head>
@@ -16,7 +17,6 @@
             <a href="/">The Tech Blog</a>
         </h1>
         <nav class="navbar sticky-top navbar-light bg-dark">
-            <!-- Conditionally render login or logout links -->
             {{#if logged_in}}
             <form class="form nav-form d-flex justify-content-between">
                 <div>
@@ -28,8 +28,7 @@
             {{/if}}
         </nav>
     </header>
-    <main class="container container-fluid mt-5 DarkGrey vh-100">
-        <!-- Render the sub layout -->
+    <main class="DarkGrey vh-100 p-4">
         {{{ body }}}
     </main>
     <footer>
