@@ -8,10 +8,27 @@
 
 
 
-document.querySelector('#home').addEventListener('click', loginForm);
+document.querySelector('#home').addEventListener('click', async () => {
+    window.location.replace('/');
+});
 
-document.querySelector('#dashboard').addEventListener('click', loginForm);
+document.querySelector('#dashboard').addEventListener('click', async () => {
+    window.location.replace('/dashboard');
+});
 
-document.querySelector('#logout').addEventListener('click', loginForm);
+document.querySelector('#logout').addEventListener('click', async () => {
+    const response = await fetch('/api/users/logout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      });
+    
+      if (response.ok) {
+        document.location.replace('/');
+      } else {
+        alert(response.statusText);
+      }
+});
 
-document.querySelector('#login').addEventListener('click', loginForm);
+document.querySelector('#login').addEventListener('click', async () => {
+    window.location.replace('/login');
+});
