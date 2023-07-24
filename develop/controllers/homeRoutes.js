@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { Blog, User } = require('../models');
-const withAuth = require('../utils/auth');
+const { Blog, User, Comment } = require('../models');
 
 
 
@@ -34,9 +33,9 @@ router.get('/', async (req, res) => {   //Query all blogs from the database usin
             ],
         });
 
-        const blogs = allBlogs.map((blog) => blog.get({plain:true})); //maps over all elements of of allBlogs and serialeze them
+        const blogs = allBlogs.map((blog) => blog.get({ plain: true })); //maps over all elements of of allBlogs and serialeze them
         //serialize to make the data easier to handle/reaD
-        
+
         res.render('homepage', {
             blogs,
             logged_in: req.session.logged_in
@@ -53,12 +52,16 @@ router.get('/blog/:id', async (req, res) => {
             include: [
                 {
                     model: User,
-                attributes: ['name'],
+                    attributes: ['name'],
+                },
+                {
+                    model: Comment
                 },
             ],
         });
 
-        const blog = blogData.get({plain:true});
+        const blog = blogData.get({ plain: true });
+        console.log(blog);
 
         res.render('blog', {
             ...blog,
@@ -67,9 +70,7 @@ router.get('/blog/:id', async (req, res) => {
     } catch (error) {
         res.status(500).json(error)
     }
-})
-
-
+});
 router.get('/dashboard')
 
 module.exports = router;

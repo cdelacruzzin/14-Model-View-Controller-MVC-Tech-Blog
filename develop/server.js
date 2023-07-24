@@ -17,7 +17,7 @@ const hbs = exphbs.create({helpers});   //uses .create to create a new instance 
 const sess = {  
     secret: 'Super secret secret',
     cookie: {   //cookie setting;
-      maxAge: 300000,   //the max time (is ms) until the cookie expires
+      maxAge: 30000000,   //the max time (is ms) until the cookie expires
       httpOnly: true,   //
       secure: false,    //set to false, so cookie will not be sent over HTTPS
       sameSite: 'strict',   //a measure to mitigate cross-site request forgery. set to strict, so 

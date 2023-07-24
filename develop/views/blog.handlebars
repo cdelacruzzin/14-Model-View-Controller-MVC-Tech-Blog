@@ -6,19 +6,19 @@
             <p>Created by <span id="username">{{user.name}}</span>on <span id="date">{{format_date date_created}}</span>
             </p>
 
-            <div class="border-primary rounded lightBlue">
-                <form class="comment-form d-flex">
-                    <div class="form-group flex-grow-1 mr-2">
-                        <textarea class="form-control" id="comment" placeholder="Write a comment"></textarea>
+            <div class="border-primary rounded lightBlue d-flex">
+                
+                    <div class="flex-grow-1 mr-2">
+                        <textarea id="comment" placeholder="Write a comment"></textarea>
                     </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary" type="submit">Submit</button>
+                    <div>
+                        <button class="btn btn-primary" id="submitbtn" data-id="{{id}}">Submit {{id}}</button>
                     </div>
-                </form>
+                
             </div>
         </div>
 
-
+{{!-- iterates each comment --}}
         {{#if comments.length}}
         <div class="col-6  p-4 border border-primary rounded lightBlue">
           <h3 id="blogname">Comments:</h3>
