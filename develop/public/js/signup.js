@@ -17,7 +17,7 @@ const signupForm = async (event) => {
         });
 
         if(response.ok) {
-            window.location.replace('/homepage');
+            window.location.replace('/');
         } else {
             alert(response.statusText);
         }

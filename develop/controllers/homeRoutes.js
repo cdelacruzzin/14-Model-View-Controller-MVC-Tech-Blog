@@ -3,7 +3,7 @@ const { Blog, User } = require('../models');
 
 
 
-router.get('/', async (req, res) => {
+router.get('/loginController', async (req, res) => {
     try {
         res.render('./login/loginController')
     } catch (error) {
@@ -21,7 +21,7 @@ router.get('/signup', async (req, res) => {
 
 
 
-router.get('/homepage', async (req, res) => {   //Query all blogs from the database using the Sequelize `findAll` method
+router.get('/', async (req, res) => {   //Query all blogs from the database using the Sequelize `findAll` method
     try {
         const allBlogs = await Blog.findAll({
             include: [  //includes the User model in the query
@@ -36,13 +36,14 @@ router.get('/homepage', async (req, res) => {   //Query all blogs from the datab
         const blogs = allBlogs.map((blog) => blog.get({plain:true})); //maps over all elements of of allBlogs and serialeze them
         //serialize to make the data easier to handle/reaD
         
-        console.log(req.session);
+  
 
 
         res.render('homepage', {
             blogs,
-            logged_in: true,
+            logged_in: req.session.logged_in
         });
+        console.log(req.session.logged_in);
     } catch (error) {
         res.status(500).json(error);
     }
