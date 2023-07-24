@@ -17,15 +17,20 @@
             <a href="/">The Tech Blog</a>
         </h1>
         <nav class="navbar sticky-top navbar-light bg-dark">
-            {{#if logged_in}}
+            
             <form class="form nav-form d-flex justify-content-between">
                 <div>
                     <button class="btn btn-outline-danger" type="button">Home</button>
                     <button class="btn btn-outline-danger" type="button">Dashboard</button>
                 </div>
-                <button class="btn btn-sm btn-outline-danger" type="button">Logout</button>
+                {{#if logged_in}}
+                <button class="btn btn-sm btn-outline-danger" id="logout" type="button">Logout</button>
+                {{else}}
+                <button class="btn btn-sm btn-outline-danger" id="logout" type="button">login</button>
+                
+                {{/if}}
             </form>
-            {{/if}}
+            
         </nav>
     </header>
     <main class="DarkGrey vh-100 p-4">
