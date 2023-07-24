@@ -37,9 +37,6 @@ router.get('/', async (req, res) => {   //Query all blogs from the database usin
         const blogs = allBlogs.map((blog) => blog.get({plain:true})); //maps over all elements of of allBlogs and serialeze them
         //serialize to make the data easier to handle/reaD
         
-  
-
-
         res.render('homepage', {
             blogs,
             logged_in: req.session.logged_in
@@ -48,6 +45,8 @@ router.get('/', async (req, res) => {   //Query all blogs from the database usin
     } catch (error) {
         res.status(500).json(error);
     }
-})
+});
+
+router.get('/dashboard')
 
 module.exports = router;

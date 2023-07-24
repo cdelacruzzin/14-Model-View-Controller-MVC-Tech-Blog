@@ -20,13 +20,13 @@
             
             <form class="form nav-form d-flex justify-content-between">
                 <div>
-                    <button class="btn btn-outline-danger" type="button">Home</button>
-                    <button class="btn btn-outline-danger" type="button">Dashboard</button>
+                    <button class="btn btn-outline-danger" id="home" type="button">Home</button>
+                    <button class="btn btn-outline-danger" id="dashboard" type="button">Dashboard</button>
                 </div>
                 {{#if logged_in}}
                 <button class="btn btn-sm btn-outline-danger" id="logout" type="button">Logout</button>
                 {{else}}
-                <button class="btn btn-sm btn-outline-danger" id="logout" type="button">login</button>
+                <button class="btn btn-sm btn-outline-danger" id="login" type="button">login</button>
                 
                 {{/if}}
             </form>
