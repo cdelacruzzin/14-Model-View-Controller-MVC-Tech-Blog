@@ -35,11 +35,12 @@
 
     <div class="container container-fluid mt-5">
       <div class="row justify-content-center">
-        <div class="col-md-7 col-lg-4 p-4 border border-primary rounded lightBlue">
-          <h2>{{name}}</h2>
-          <p>{{description}}</p>
-          <p>Created by {{user.name}} on {{format_date date_created}}</p>
-    
+        <div class="col-6 p-4 border border-primary rounded lightBlue">
+          <h2 id="blogname">{{name}}</h2>
+          <p id="description">{{description}}</p>
+          <p>Created by <span id="username">{{user.name}}</span>on <span id="date">{{format_date date_created}}</span>
+          </p>
+
           <div class="border-primary rounded lightBlue">
             <form class="comment-form d-flex">
               <div class="form-group flex-grow-1 mr-2">
@@ -51,9 +52,25 @@
             </form>
           </div>
         </div>
+
+        <div class="col-6  p-4 border border-primary rounded lightBlue">
+          <h3 id="blogname">Comments:</h3>
+          {{#each comments as |comment|}}
+          <div class="row mb-2">
+            <div class="col-md-8">
+              <p>{{comment.description}}</p>
+            </div>
+          </div>
+          {{/each}}
+        </div>
       </div>
+
+
+
+
     </div>
-    
+    </div>
+
 
 
 
