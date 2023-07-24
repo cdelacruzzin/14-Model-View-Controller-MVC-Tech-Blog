@@ -47,6 +47,29 @@ router.get('/', async (req, res) => {   //Query all blogs from the database usin
     }
 });
 
+router.get('/blog/:id', async (req, res) => {
+    try {
+        const blogData = await Blog.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                attributes: ['name'],
+                },
+            ],
+        });
+
+        const blog = blogData.get({plain:true});
+
+        res.render('/blog', {
+            ...blog,
+            logged_in: req.session.logged_in
+        });
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+
+
 router.get('/dashboard')
 
 module.exports = router;
