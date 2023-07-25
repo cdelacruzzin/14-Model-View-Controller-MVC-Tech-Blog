@@ -1,3 +1,7 @@
+<div>
+
+</div>
+
 {{#if blogs.length}}
    <h3>Current Projects:</h3>
    {{#each blogs as |blog|}}
@@ -16,19 +20,6 @@
     {{/each}}
 {{/if}}
 
-{{!-- <div class="row gap-4 d-flex justify-content-center">
-{{#each users as |user| }}
-    <div class="col-sm-5 mb-4 project lightBlue border border-primary rounded">
-        <div class="col-md-5">
-            <h2>
-                <a href="/blog/{{user.blogs.id}}">{{user.blogs.name}}</a>
-            </h2>
-            <p>Created by {{user.name}} on {{format_date user.blogs.date_created}}</p>
-            <p>
-                {{user.blogs.description}}
-            </p>
-        </div>
-
-    </div>
-{{/each}}
-</div> --}}
+  <div class="position-fixed bottom-0 p-3">
+      <button class="btn btn-primary" id="create">Create a post</button>
+  </div>
