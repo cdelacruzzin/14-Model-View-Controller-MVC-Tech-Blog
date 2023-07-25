@@ -2,15 +2,16 @@
 document.querySelector('#create').addEventListener('click', () => {
     window.location.replace('/newBlog');
 });
-
-
+console.log('hi')
 const newPost = async (event) => {
     event.preventDefault();
 
     const description = document.querySelector('#newContent').value.trim();
     const name = document.querySelector('#newTitle').value.trim();
+        console.log(description);
+        console.log(name);
+    if(description && name) {
 
-    if(content && title) {
         const response = await fetch('/api/blog', {
             method: 'POST',
             body: JSON.stringify({name, description}),
@@ -24,8 +25,7 @@ const newPost = async (event) => {
             alert('Failed to create blog');
           }
     }
-
 }
 
-document.querySelector('.newPost-form').addEventListener('submit', newPost);
+document.querySelector('#createBtn').addEventListener('click', newPost);
 
