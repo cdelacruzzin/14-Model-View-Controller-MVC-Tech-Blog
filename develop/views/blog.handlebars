@@ -25,10 +25,12 @@
           
           <h3 id="blogname">Comments:</h3>
           {{#each comments as |comment|}}
-          <div class="row mb-2">
-            <div class="col-md-8">
-              <h4>{{user.name}}</h4>
-              <p> {{comment.description}}</p>
+          <div class="row mb-2 border border-primary rounded lightBlue">
+            <div class="col-10">
+              <p> <span> <strong>{{user.name}}:</strong> </span>{{comment.description}}</p>
+            </div>
+            <div class="col">
+              <p>{{format_date comment.date_created}}</p>
             </div>
           </div>
           {{/each}}
