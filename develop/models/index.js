@@ -8,18 +8,26 @@ User.hasMany(Blog, {
     onDelete: 'CASCADE',
 });
 
-//defines a one-to-one relation between blog to user
+// Defines a one-to-many relation from Blog to Comment
+Blog.hasMany(Comment, {
+    foreignKey: 'blog_id',
+    onDelete: 'CASCADE',
+});
+
+// Defines a many-to-one relation from Blog to User
 Blog.belongsTo(User, {
     foreignKey: 'user_id',
 });
 
-Blog.hasMany(Comment, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE',
+// Defines a many-to-one relation from Comment to Blog
+Comment.belongsTo(Blog, {
+    foreignKey: 'blog_id',
 });
 
-Comment.belongsTo(Blog, {
+// Defines a many-to-one relation from Comment to User
+Comment.belongsTo(User, {
     foreignKey: 'user_id',
 });
+
 
 module.exports = {User, Blog, Comment};
