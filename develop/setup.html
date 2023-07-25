@@ -35,52 +35,25 @@
 
     <div class="container container-fluid mt-5">
       <div class="row justify-content-center">
-        <div class="col-6 p-4 border border-primary rounded lightBlue">
-          <h2 id="blogname">{{name}}</h2>
-          <p id="description">{{description}}</p>
-          <p>Created by <span id="username">{{user.name}}</span>on <span id="date">{{format_date date_created}}</span>
-          </p>
-
-          <div class="border-primary rounded lightBlue">
-            <form class="comment-form d-flex">
-              <div class="form-group flex-grow-1 mr-2">
-                <textarea class="form-control" id="comment" placeholder="Write a comment"></textarea>
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary" type="submit">Submit</button>
-              </div>
-            </form>
+          <div class="col-md-7 col-lg-4 p-4 border border-primary rounded lightBlue">
+              <h2>Login</h2>
+              <form class="form newPost-form">
+                  <div class="form-group">
+                      <label for="newTitle">Title:</label>
+                      <textarea class="form-control" id="newTitle"></textarea>
+                  </div>
+                  <div class="form-group">
+                      <label for="newContent">Content:</label>
+                      <textarea class="form-control" id="newContent"></textarea>
+                  </div>
+                  <div class="form-group">
+                      <button class="btn btn-primary" type="submit">login</button>
+                  </div>
+              </form>
           </div>
-        </div>
-
-        <div class="col-6  p-4 border border-primary rounded lightBlue">
-          <h3 id="blogname">Comments:</h3>
-          {{#each comments as |comment|}}
-          <div class="row mb-2">
-            <div class="col-md-8">
-              <p>{{comment.description}}</p>
-            </div>
-          </div>
-          {{/each}}
-        </div>
       </div>
-    </div>
-    </div>
-
-
-    <div class="container py-5">
-      <h1>Hello, world!</h1>
-      <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-      <hr class="my-4">
-      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
   </div>
-
-  <!-- Sticky Button at Bottom Right -->
-  <div class="position-fixed bottom-0 p-3">
-      <button class="btn btn-primary">Sticky Button</button>
-  </div>
-
+  
 
 
 
