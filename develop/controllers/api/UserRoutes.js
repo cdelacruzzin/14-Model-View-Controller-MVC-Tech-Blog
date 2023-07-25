@@ -5,8 +5,10 @@ const {User} = require('../../models');
 // Login - /api/users/login
 router.post('/login', async (req, res) => {
 
+console.log(req.body);
     try {
         const userData = await User.findOne({where: {email: req.body.email}});
+        console.log(userData);
 
         if (!userData) {
       res

@@ -79,21 +79,21 @@ router.get('/blog/:id', async (req, res) => {
     }
 });
 router.get('/dashboard', async (req, res) => {
-    const blogs = await Blog.findAll({
-        include: [  //includes the User model in the query
-                {
-                    model: User,
-                    attributes: ['name'],   //specify that to include the 'name' attribure of the user
-
-                },
-            ],
-            where: {
-                user_id: req.params.id,
-            },
-    },
-    );
-
-    console.log(blogs);
+    try {
+        // Find the logged in user based on the session ID
+        const userData = await User.findByPk(req.session.user_id, {
+          include: [{ model: Blog }],
+        });
+    
+        const user = userData.get({ plain: true });
+    
+        res.render('dashboard', {
+          ...user,
+          logged_in: true
+        });
+      } catch (err) {
+        res.status(500).json(err);
+      }
 })
 
 module.exports = router;
