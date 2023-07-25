@@ -65,7 +65,8 @@ router.get('/blog/:id', async (req, res) => {
 
         res.render('blog', {
             ...blog,
-            logged_in: req.session.logged_in
+            logged_in: req.session.logged_in,
+            blog_id: blog.id,
         });
     } catch (error) {
         res.status(500).json(error)
