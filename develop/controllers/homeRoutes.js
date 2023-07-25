@@ -98,6 +98,14 @@ router.get('/dashboard', withAuth, async (req, res) => {
       } catch (err) {
         res.status(500).json(err);
       }
+});
+
+router.get('/newBlog', withAuth, async (req, res) => {
+    try {
+        res.render('newBlog');
+    } catch (error) {
+        res.json(error);
+    }
 })
 
 module.exports = router;
