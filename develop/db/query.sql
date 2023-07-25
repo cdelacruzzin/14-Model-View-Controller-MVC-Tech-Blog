@@ -1,0 +1,5 @@
+
+SHOW TABLES;
+SELECT * FROM user;
+SELECT * FROM blog;
+SELECT * FROM comment;
