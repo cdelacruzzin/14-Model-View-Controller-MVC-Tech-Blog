@@ -35,6 +35,7 @@ router.get('/', async (req, res) => {   //Query all blogs from the database usin
         const blogs = allBlogs.map((blog) => blog.get({ plain: true })); //maps over all elements of of allBlogs and serialeze them
         //serialize to make the data easier to handle/reaD
 
+        console.log(blogs);
         res.render('homepage', {
             blogs,
             logged_in: req.session.logged_in
@@ -67,7 +68,6 @@ router.get('/blog/:id', async (req, res) => {
         });
 
         const blog = blogData.get({ plain: true });
-        console.log(blog);
 
         res.render('blog', {
             ...blog,
@@ -85,12 +85,15 @@ router.get('/dashboard', async (req, res) => {
           include: [{ model: Blog }],
         });
     
-        const user = userData.get({ plain: true });
+        const users = userData.get({ plain: true });
+        
     
         res.render('dashboard', {
-          ...user,
-          logged_in: true
+          ...users,
+          logged_in: req.session.logged_in
         });
+        console.log(users);
+        console.log(req.session);
       } catch (err) {
         res.status(500).json(err);
       }
