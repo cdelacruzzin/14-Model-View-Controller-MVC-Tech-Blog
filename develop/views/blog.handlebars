@@ -18,14 +18,17 @@
             </div>
         </div>
 
+
 {{!-- iterates each comment --}}
         {{#if comments.length}}
         <div class="col-6  p-4 border border-primary rounded lightBlue">
+          
           <h3 id="blogname">Comments:</h3>
           {{#each comments as |comment|}}
           <div class="row mb-2">
             <div class="col-md-8">
-              <p>{{comment.description}}</p>
+              <h4>{{user.name}}</h4>
+              <p> {{comment.description}}</p>
             </div>
           </div>
           {{/each}}
