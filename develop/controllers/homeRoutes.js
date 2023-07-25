@@ -32,7 +32,6 @@ router.get('/', async (req, res) => {   //Query all blogs from the database usin
                 },
             ],
         });
-
         const blogs = allBlogs.map((blog) => blog.get({ plain: true })); //maps over all elements of of allBlogs and serialeze them
         //serialize to make the data easier to handle/reaD
 
@@ -79,6 +78,22 @@ router.get('/blog/:id', async (req, res) => {
         res.status(500).json(error)
     }
 });
-router.get('/dashboard')
+router.get('/dashboard', async (req, res) => {
+    const blogs = await Blog.findAll({
+        include: [  //includes the User model in the query
+                {
+                    model: User,
+                    attributes: ['name'],   //specify that to include the 'name' attribure of the user
+
+                },
+            ],
+            where: {
+                user_id: req.params.id,
+            },
+    },
+    );
+
+    console.log(blogs);
+})
 
 module.exports = router;

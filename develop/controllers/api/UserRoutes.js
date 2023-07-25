@@ -32,7 +32,17 @@ router.post('/login', async (req, res) => {
     } catch (error) {
         
     }
-})
+});
+
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
 
 
 // CREATE new user - /api/users/signup
@@ -56,6 +66,9 @@ router.post('/signup', async (req, res) => {
         console.log(error)
         res.status(400).json(error);
     }
-})
+});
+
+
+
 
 module.exports = router;
