@@ -1,4 +1,7 @@
 
+
+
+
 document.querySelector('#home').addEventListener('click', async () => {
     window.location.replace('/');
 });

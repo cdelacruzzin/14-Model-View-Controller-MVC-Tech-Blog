@@ -1,9 +1,10 @@
-const withAuth = (req, res, next) => {
-    if (res.session.logged_in) {
-        next();
-    } else {
-        res.render('/loginController');
-    }
-};
 
+const withAuth = (req, res, next) => {
+    // If the user is not logged in, redirect the request to the login route
+    if (!req.session.logged_in) {
+      res.redirect('/loginController');
+    } else {
+      next();
+    }
+  };
 module.exports = withAuth;
