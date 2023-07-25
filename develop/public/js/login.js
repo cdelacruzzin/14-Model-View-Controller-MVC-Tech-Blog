@@ -7,11 +7,14 @@ const loginForm = async (event) => {
 
     //if both email and password are entered, a post request will be sent to the api
     if(email && password) {
+
+        console.log(email);
+        console.log(password);
         const response = await fetch('/api/users/login', {
-            method: POST,
-            body: JSON.stringify({email, password}),
-            headers: {'Content-Type': 'application/json'},
-        });
+            method: 'POST',
+            body: JSON.stringify({ email, password }),
+            headers: { 'Content-Type': 'application/json' },
+          });
 
         if(response.ok) {
             // if resonse was successful, page will redirect to the homepage
@@ -20,6 +23,6 @@ const loginForm = async (event) => {
             alert(response.statusText);
         }
     }
-}
+};
 
 document.querySelector('.login-form').addEventListener('submit', loginForm);
