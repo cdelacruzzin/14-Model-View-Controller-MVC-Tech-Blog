@@ -117,6 +117,14 @@ router.get('/newBlog', withAuth, async (req, res) => {
     } catch (error) {
         res.json(error);
     }
+});
+
+router.get('/editBlog', withAuth, async (req, res) => {
+    try {
+        res.render('editBlog')
+    } catch (error) {
+        res.json(error)
+    }
 })
 
 module.exports = router;

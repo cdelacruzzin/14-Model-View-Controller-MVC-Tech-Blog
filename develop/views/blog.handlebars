@@ -1,47 +1,47 @@
 <div class="container container-fluid mt-5">
-    <div class="row justify-content-center">
-        <div class="col-6 p-4 border border-primary rounded lightBlue">
-            <h2 id="blogname">{{name}}</h2>
-            <p id="description">{{description}}</p>
-            <p>Created by <span id="username">{{user.name}}</span>on <span id="date">{{format_date date_created}}</span>
-            </p>
+  <div class="row justify-content-center">
+    <div class="col-6 p-4 border border-primary rounded lightBlue">
+      <h2 id="blogname">{{name}}</h2>
+      <p id="description">{{description}}</p>
+      <p>Created by <span id="username">{{user.name}}</span>on <span id="date">{{format_date date_created}}</span>
+      </p>
 
-            <div class="border-primary rounded lightBlue d-flex">
-                
-                    {{!-- <div class=" mr-2">
-                        <textarea id="comment" placeholder="Write a comment"></textarea>
-                    </div> --}}
-                    <textarea class="form-control" id="comment" placeholder="Write a comment"></textarea>
-                    <div class="d-flex justify-content-end mx-2 gap-2">
-                        <button class="btn btn-primary" id="editbtn" data-id="{{id}}">Edit</button>
-                        <button class="btn btn-primary" id="deletebtn" data-id="{{id}}">Delete </button>
-                        <button class="btn btn-primary" id="submitbtn" data-id="{{id}}">Submit</button>
-                    </div>
-                
-            </div>
+      <div class="border-primary rounded lightBlue d-flex">
+
+        {{!-- <div class=" mr-2">
+          <textarea id="comment" placeholder="Write a comment"></textarea>
+        </div> --}}
+        <textarea class="form-control" id="comment" placeholder="Write a comment"></textarea>
+        <div class="d-flex justify-content-end mx-2 gap-2">
+          <button class="btn btn-primary" id="editbtn" data-id="{{id}}">Edit</button>
+          <button class="btn btn-primary" id="deletebtn" data-id="{{id}}">Delete </button>
+          <button class="btn btn-primary" id="submitbtn" data-id="{{id}}">Submit</button>
         </div>
 
-
-{{!-- iterates each comment --}}
-        {{#if comments.length}}
-        <div class="col-6  p-4 border border-primary rounded lightBlue">
-          
-          <h3 id="blogname">Comments:</h3>
-          {{#each comments as |comment|}}
-          <div class="row mb-2 border border-primary rounded lightBlue">
-            <div class="col-10">
-              <p> <span> <strong>{{user.name}}:</strong> </span>{{comment.description}}</p>
-            </div>
-            <div class="col">
-              <p>{{format_date comment.date_created}}</p>
-            </div>
-          </div>
-          {{/each}}
-        </div>
-        {{/if}}
       </div>
-    
+    </div>
+
+
+    {{!-- iterates each comment --}}
+    {{#if comments.length}}
+    <div class="col-6  p-4 border border-primary rounded lightBlue">
+
+      <h3 id="blogname">Comments:</h3>
+      {{#each comments as |comment|}}
+      <div class="row mb-2 border border-primary rounded lightBlue">
+        <div class="col-10">
+          <p> <span> <strong>{{user.name}}:</strong> </span>{{comment.description}}</p>
+        </div>
+        <div class="col">
+          <p>{{format_date comment.date_created}}</p>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    {{/if}}
+  </div>
+
 </div>
 </div>
 <script src="/js/blog.js"></script>
-  <script src="/js/newBlog.js"></script>
+<script src="/js/newBlog.js"></script>
