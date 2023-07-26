@@ -12,7 +12,9 @@
                         <textarea id="comment" placeholder="Write a comment"></textarea>
                     </div>
                     <div>
-                        <button class="btn btn-primary" id="submitbtn" data-id="{{id}}">Submit {{id}}</button>
+                        <button class="btn btn-primary" id="editbtn" data-id="{{id}}">Edit</button>
+                        <button class="btn btn-primary" id="deletebtn" data-id="{{id}}">Delete </button>
+                        <button class="btn btn-primary" id="submitbtn" data-id="{{id}}">Submit</button>
                     </div>
                 
             </div>
@@ -35,8 +37,13 @@
           </div>
           {{/each}}
         </div>
+        {{/if}}
       </div>
-    {{/if}}
+
+
+      <button id="edit">edit</button>
+      <button id="delete">delete</button>
+    
 </div>
 </div>
 <script src="/js/blog.js"></script>
