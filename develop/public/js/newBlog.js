@@ -20,7 +20,9 @@ const newPost = async (event) => {
             alert('Failed to create blog');
           }
     }
-}
+};
+
+
+
 
 document.querySelector('#createBtn').addEventListener('click', newPost);
-

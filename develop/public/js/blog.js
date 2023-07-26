@@ -19,5 +19,23 @@ const newCommentHandler = async (event) => {
                 alert(response.statusText);
             }
         }
-}
+};
+
+const deletePost = async (event) => {
+    console.log('hi');
+    if (event.target.hasAttribute('data-id')) {
+      const id = event.target.getAttribute('data-id');
+  
+      const response = await fetch(`/api/blog/${id}`, {
+        method: 'DELETE',
+      });
+  
+      if (response.ok) {
+        document.location.replace('/dashboard');
+      } else {
+        alert('Failed to delete project');
+      }
+    }
+  }
 document.querySelector('#submitbtn').addEventListener('click', newCommentHandler);
+document.querySelector('#deletebtn').addEventListener('click', deletePost);

@@ -8,10 +8,11 @@
 
             <div class="border-primary rounded lightBlue d-flex">
                 
-                    <div class="flex-grow-1 mr-2">
+                    {{!-- <div class=" mr-2">
                         <textarea id="comment" placeholder="Write a comment"></textarea>
-                    </div>
-                    <div>
+                    </div> --}}
+                    <textarea class="form-control" id="comment" placeholder="Write a comment"></textarea>
+                    <div class="d-flex justify-content-end mx-2 gap-2">
                         <button class="btn btn-primary" id="editbtn" data-id="{{id}}">Edit</button>
                         <button class="btn btn-primary" id="deletebtn" data-id="{{id}}">Delete </button>
                         <button class="btn btn-primary" id="submitbtn" data-id="{{id}}">Submit</button>
@@ -39,11 +40,8 @@
         </div>
         {{/if}}
       </div>
-
-
-      <button id="edit">edit</button>
-      <button id="delete">delete</button>
     
 </div>
 </div>
 <script src="/js/blog.js"></script>
+  <script src="/js/newBlog.js"></script>
