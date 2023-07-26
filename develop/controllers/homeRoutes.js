@@ -119,9 +119,35 @@ router.get('/newBlog', withAuth, async (req, res) => {
     }
 });
 
-router.get('/editBlog', withAuth, async (req, res) => {
+router.get('/editBlog/:id', withAuth, async (req, res) => {
     try {
-        res.render('editBlog')
+
+        const blogData = await Blog.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+                {
+                    model: Comment,
+                    include: [
+                        {
+                            model: User,
+                            as: 'user',
+                            attributes: ['name'],
+                        },
+                    ],
+                },
+            ],
+        });
+
+        const blog = blogData.get({ plain: true });
+console.log(blog);
+        res.render('editBlog', {
+            ...blog,
+            logged_in: req.session.logged_in,
+            blog_id: blog.id,
+        });
     } catch (error) {
         res.json(error)
     }

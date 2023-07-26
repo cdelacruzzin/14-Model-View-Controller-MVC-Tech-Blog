@@ -39,11 +39,11 @@ const deletePost = async (event) => {
   };
 
 
-
-
-
 document.querySelector('#submitbtn').addEventListener('click', newCommentHandler);
 document.querySelector('#deletebtn').addEventListener('click', deletePost);
-document.querySelector('#editbtn').addEventListener('click', () => {
-    window.location.replace('/editBlog');
+document.querySelector('#editbtn').addEventListener('click', (event) => {
+    if (event.target.hasAttribute('data-id')) {
+        const id = event.target.getAttribute('data-id');
+        window.location.replace(`/editBlog/${id}`);
+    }
 });
