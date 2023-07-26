@@ -33,9 +33,34 @@ const deletePost = async (event) => {
       if (response.ok) {
         document.location.replace('/dashboard');
       } else {
-        alert('Failed to delete project');
+        alert('Failed to delete blog');
       }
     }
+  };
+
+
+  const editPost = async (event) => {
+    if(event.target.hasAttribute('data-id')) {
+        const id = event.target.getAttribute('data-id');
+
+        const response = await fetch (`/api/blog/put/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify({name, description}),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        if (response.ok) {
+            document.location.replace('/dashboard');
+          } else {
+            alert('Failed to delete blog');
+          }
+    }
   }
+
+
 document.querySelector('#submitbtn').addEventListener('click', newCommentHandler);
 document.querySelector('#deletebtn').addEventListener('click', deletePost);
+document.querySelector('#editbtn').addEventListener('click', () => {
+    window.location.replace('/editBlog');
+});
