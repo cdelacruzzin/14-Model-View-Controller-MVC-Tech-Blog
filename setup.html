@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="./public/css/jass.css">
+  <link rel="stylesheet" href="./public/css/style.css">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+
+</head>
+
+<body>
+
+  <header class="display-block bg-dark p-4 text-center">
+    <h1>
+      <a href="/">The Tech Blog</a>
+    </h1>
+    <nav class="navbar sticky-top navbar-light bg-dark">
+      <form class="form nav-form d-flex justify-content-around">
+        <div>
+          <button class="btn btn-outline-danger" type="button">Home</button>
+          <button class="btn btn-outline-danger" type="button">Dashboard</button>
+        </div>
+        <button class="btn btn-sm btn-outline-danger" type="button">Logout</button>
+      </form>
+    </nav>
+  </header>
+
+  <main class="DarkGrey vh-100  p-4 ">
+
+
+    <div id="home-container">
+      {{!-- Post --}}
+      <div id="post-container">
+        <img id="post--image" src="./assets/images/pfps/default_pfp_4.png" alt="Post image" />
+      </div>
+
+      {{!-- Comments --}}
+      <header id="comments--header">
+        {{!-- Where Like, View and Save Counters are --}}
+        <div id="likes-counter-container">
+          <div class="icon-container">
+            <img src="./assets/icons/heart.svg" onload="ImgToSvg(this)" alt="Likes counter icon">
+          </div>
+          <h1 id="likes-counter">103.4K</h1>
+        </div>
+        <div id="views-counter-container">
+          <div class="icon-container">
+            <img src="./assets/icons/eye.svg" onload="ImgToSvg(this)" alt="Likes counter icon">
+          </div>
+          <h1 id="views-counter">223.1K</h1>
+        </div>
+        <div id="saves-counter-container">
+          <div class="icon-container">
+            <img src="./assets/icons/bookmark.svg" onload="ImgToSvg(this)" alt="Likes counter icon">
+          </div>
+          <h1 id="saves-counter">823</h1>
+        </div>
+      </header>
+      <div id="comments-container">
+        <div id="post--description">
+          <div id="post--author-pfp-container">
+            <img id="post--author-pfp" src="./assets/images/pfps/default_pfp_4.png" alt="User Pfp" />
+          </div>
+          <div id="post--author-content">
+            <h1 class="author-username">JefferyEpstizzy</h1>
+            <p>
+              New profile picture! <br>
+              I looked a little confused in this one. 😅
+            </p>
+          </div>
+        </div>
+      
+        <div id="comment-box">
+          <textarea 
+            id="comment-box" 
+            placeholder="Add a comment..."
+            maxlength="250"
+            onkeyup="textAreaAdjust(event, this)"
+          ></textarea>
+          <button id="comment-box-send-button">
+            <img src="./assets/icons/paper_plane.svg" onload="ImgToSvg(this)" alt="Commnet box send button">
+          </button>
+        </div>
+
+        <div id="comments">
+          <div class="comment">
+            <div class="comment--user-pfp-container">
+              <img class="comment--user-pfp" src="./assets/images/pfps/default_pfp_3.png" alt="User Pfp" />
+            </div>
+            <div class="comment--content">
+              <h1 class="comment--user-name">Mike</h1>
+              <p class="comment--content">
+                You: 👁️👄👁️
+              </p>
+            </div>
+          </div>
+
+          <div class="comment">
+            <div class="comment--user-pfp-container">
+              <img class="comment--user-pfp" src="./assets/images/pfps/default_pfp_1.png" alt="User Pfp" />
+            </div>
+            <div class="comment--content">
+              <h1 class="comment--user-name">Admin</h1>
+              <p class="comment--content">
+                You look stupid.
+              </p>
+            </div>
+          </div>
+
+          <div class="comment">
+            <div class="comment--user-pfp-container">
+              <img class="comment--user-pfp" src="./assets/images/pfps/default_pfp_7.png" alt="User Pfp" />
+            </div>
+            <div class="comment--content">
+              <h1 class="comment--user-name">SlimJim</h1>
+              <p class="comment--content">
+                You look awesome. <br>
+                Can't wait to see your other posts.
+              </p>
+            </div>
+          </div>
+          
+          <div class="comment">
+            <div class="comment--user-pfp-container">
+              <img class="comment--user-pfp" src="./assets/images/pfps/default_pfp_2.png" alt="User Pfp" />
+            </div>
+            <div class="comment--content">
+              <h1 class="comment--user-name">SlimJim</h1>
+              <p class="comment--content">
+                Love it.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{!-- Posts --}}
+      <header id="posts--header">
+        <img src="./assets/icons/home.svg" onload="ImgToSvg(this)" alt="">
+      </header>
+      {{!-- !! Do not go past 7 featured posts shown at a time --}}
+      <div id="posts-container">
+        <div class="featured-post">
+          <img class="feature-post--image" src="./assets/images/pfps/default_pfp_4.png" alt="Featured post image">
+        </div>
+        <div class="featured-post empty"></div>
+        <div class="featured-post empty"></div>
+        <div class="featured-post empty"></div>
+        <div class="featured-post empty"></div>
+        <div class="featured-post empty"></div>
+        <div class="featured-post empty"></div>
+      </div>
+
+      {{!-- Rankings --}}
+      <header id="rankings--header">
+        <img src="./assets/icons/ranking_star.svg" onload="ImgToSvg(this)" alt="">
+      </header>
+      <div id="rankings-container">
+        <div class="featured-user">
+          <img class="feature-user--pfp" src="./assets/images/pfps/default_pfp_7.png" alt="Featured post image">
+        </div>
+        <div class="featured-user empty"></div>
+        <div class="featured-user empty"></div>
+        <div class="featured-user empty"></div>
+        <div class="featured-user empty"></div>
+        <div class="featured-user empty"></div>
+        <div class="featured-user empty"></div>
+        <div class="featured-user empty"></div>
+        <div class="featured-user empty"></div>
+        <div class="featured-user empty"></div>
+      </div>
+    </div>
+
+
+
+
+  </main>
+</body>
+
+</html>
