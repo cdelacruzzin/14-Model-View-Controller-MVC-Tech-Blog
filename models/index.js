@@ -20,7 +20,7 @@ Blog.belongsTo(User, {
 });
 
 // Defines a many-to-one relation from Comment to Blog
-Comment.belongsTo(`Blog`, {
+Comment.belongsTo(Blog, {
     foreignKey: 'blog_id',
 });
 
